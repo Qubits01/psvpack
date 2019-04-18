@@ -30,8 +30,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 ## Installing psvstore
 
 ```
-git clone https://github.com/Qubits01/psvpack/
-cd psvpack
+git clone https://github.com/Qubits01/psvstore/
+cd psvstore
 sudo ./setup.py install
 ```
 
@@ -42,14 +42,14 @@ After installation, you should now be able to run:
 psvstore
 ```
 
-Make sure to run this as your user and NOT root! This will generate the `~/.config/psvpack` directory, create
-a default configuration, then launch your default editor (defined by `$EDITOR`; `nano` is used if this is not defined). Once the editor is launched, be sure to update the `tsv_urls` values. Once you have finished making changes, press `Control+X` to save and exit. This file is located at `~/.config/psvpack/config.yaml` if you need to make further updates in the future.
+Make sure to run this as your user and NOT root! This will generate the `~/.config/psvstore` directory, create
+a default configuration, then launch your default editor (defined by `$EDITOR`; `nano` is used if this is not defined). Once the editor is launched, be sure to update the `tsv_urls` values. Once you have finished making changes, press `Control+X` to save and exit. This file is located at `~/.config/psvstore/config.yaml` if you need to make further updates in the future.
 
 # Usage
 
 Once you have the correct URLs for TSV files added to your config file, you can begin using psvstore. The general usage is as follows:
 ```
-psvpack [OPTIONS] COMMAND PARAMETER
+psvstore [OPTIONS] COMMAND PARAMETER
 ```
 
 `COMMAND` can be one of the following:
@@ -74,25 +74,25 @@ psvstore [-g] s GAME_TITLE_OR_ID
 
 **Finding PSV games by search term:**
 ```
-psvpack s neptun
+psvstore s neptun
 ```
 This will return a list of all Neptunia games for PS Vita. If you wish to grab a title, copy the ID for use with the `a` command.
 
 **Finding all related DLC for a Vita game:**
 ```
-psvpack -g PSV_DLC s PCSG00551
+psvstore -g PSV_DLC s PCSG00551
 ```
 This will return a list of all DLC packs associated with title `PCSG00551` (*Taiko no Tatsujin V Version*).
 
 **You can also use UTF-8 text when searching for Japanese or Asian titles:**
 ```
-psvpack s 伝説
+psvstore s 伝説
 ```
 This searches for games with the text 【伝説】(*densetsu*).
 
 Be sure to add quotes when your search term contains spaces:
 ```
-psvpack s "final fanta"
+psvstore s "final fanta"
 ```
 This searches for *Final Fantasy* games.
 
