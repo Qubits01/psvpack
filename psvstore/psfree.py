@@ -337,9 +337,15 @@ def archive(tid, config):
         archive_name = archive_name + ".zip"
     else:
         archive_name = archive_name + " [" + str(dlc_count) + "xDLC].zip"
+    zip_path = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'zip'))
     zip_out = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'zip', archive_name))
     zip_in = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'pkg'))
     print(archive_name)
+    if not os.path.exists(zip_path):
+        try:
+            os.makedirs(zip_path, 0o775, exist_ok=True)
+        except:
+            logger.error("Failed to create zip output directory %s: %s", cache_dir, str(e))
     with ZipFile(zip_out, 'w') as zf:
         cpath = zip_in
         for dirpath,dirs,files in os.walk(cpath):
