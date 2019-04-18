@@ -2,13 +2,9 @@
 # vim: set ts=4 sw=4 expandtab syntax=python:
 """
 
-psvpack.util
+psvstore.util
 Utility functions and configuration loader
 
-@author   Jacob Hipps <jacob@ycnrg.org>
-
-Copyright (c) 2018 J. Hipps / Neo-Retro Group, Inc.
-https://ycnrg.org/
 
 """
 
@@ -20,7 +16,7 @@ import subprocess
 
 import yaml
 
-from psvpack import default_config, conf_header
+from psvstore import default_config, conf_header
 
 
 logger = logging.getLogger('psvpack')
@@ -144,9 +140,9 @@ def get_platform_confpath(fname=None):
     the current platform
     """
     pathlist = {
-        'Linux': "~/.config/psvpack",
-        'Darwin': "~/.config/psvpack",
-        'Windows': "%APPDATA%/psvpack",
+        'Linux': "~/.config/psvstore",
+        'Darwin': "~/.config/psvstore",
+        'Windows': "%APPDATA%/psvstore",
     }
     ppath = os.path.realpath(os.path.expandvars(os.path.expanduser(pathlist[platform.system()])))
     if fname:
