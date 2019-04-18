@@ -19,24 +19,23 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="psvpack.egg-info\dependency_links.txt" />
-    <Content Include="psvpack.egg-info\entry_points.txt" />
-    <Content Include="psvpack.egg-info\requires.txt" />
-    <Content Include="psvpack.egg-info\SOURCES.txt" />
-    <Content Include="psvpack.egg-info\top_level.txt" />
+    <Content Include="psvstore.egg-info\dependency_links.txt" />
+    <Content Include="psvstore.egg-info\entry_points.txt" />
+    <Content Include="psvstore.egg-info\requires.txt" />
+    <Content Include="psvstore.egg-info\SOURCES.txt" />
+    <Content Include="psvstore.egg-info\top_level.txt" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="psvpack\cli.py" />
-    <Compile Include="psvpack\gui.py" />
-    <Compile Include="psvpack\psfree.py" />
-    <Compile Include="psvpack\util.py" />
-    <Compile Include="psvpack\__init__.py" />
+    <Compile Include="psvstore\cli.py" />
+    <Compile Include="psvstore\psfree.py" />
+    <Compile Include="psvstore\util.py" />
+    <Compile Include="psvstore\__init__.py" />
     <Compile Include="setup.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="psvpack" />
-    <Folder Include="psvpack.egg-info" />
+    <Folder Include="psvstore" />
+    <Folder Include="psvstore.egg-info" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
