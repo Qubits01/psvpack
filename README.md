@@ -1,7 +1,7 @@
 
 # psvstore
 
-**psvstore** is a command-line tool  for Linux for automatically creating archives of PS Vita Titles. It also includes a search funtion 
+**psvstore** is a command-line tool  for Linux for automatically creating archives of PS Vita Titles. It also includes a search function. It might work on other platforms, too but it's only tested on Linux so far.
 
 # License
 
