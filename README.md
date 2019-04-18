@@ -55,6 +55,7 @@ psvpack [OPTIONS] COMMAND PARAMETER
 `COMMAND` can be one of the following:
 * `s` - Search through TSV files for a title name, content ID, or title ID
 * `a` - Create a zip archive of the given Title ID with all available DLCs as well as the latest cumulative Update. 
+* `b` - Process a batch file containing Title IDs to download 
 
 ## Searching for Games
 
@@ -110,7 +111,7 @@ psvstore a TITLE_ID
 ```
 psvstore a PCSA00007
 ```
-This will download *Hustle Kings (US)*, all DLCs of that game and the latest update to your default cache directory. It will then create a zip archive named "Hustle Kings [PCSA00007] [US] [1.01] [3xDLC].zip". Inside will be all the downloaded pks with the unaltered name. There will also be stored the corresponding zRIF of a package, if available. It will be the same name as the pkg with a .zRIF extension.
+This will download *Hustle Kings (US)*, all DLCs of that game and the latest update to your default cache directory. It will then create a zip archive named "Hustle Kings [PCSA00007] [US] [1.01] [3xDLC].zip". Inside will be all the downloaded pks with the unaltered name. There will also be stored the corresponding zRIF of a package, if available within the tsv file. It will be the same filename as the pkg with a .zRIF extension.
 Each DLC will be stored within a subdir named accordingly to the DLC. Updates will be stored in a subfolder named after the version number of the Update. Finally, there will be a comment added to the zipfile, that will tell you the minimum required firmware version of the game - updated and not updated.
 
 ## Batch-Archiving Games
