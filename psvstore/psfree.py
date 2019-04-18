@@ -5,11 +5,6 @@
 psvpack.psfree
 PSFree search tool, TSV parser & pkg downloader
 
-@author   Jacob Hipps <jacob@ycnrg.org>
-
-Copyright (c) 2018 J. Hipps / Neo-Retro Group, Inc.
-https://ycnrg.org/
-
 """
 
 import os
@@ -29,7 +24,7 @@ import arrow
 import requests
 import progressbar
 
-from psvpack.util import *
+from psvstore.util import *
 
 
 logger = logging.getLogger('psvpack')
