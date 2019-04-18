@@ -2,14 +2,9 @@
 # vim: set ts=4 sw=4 expandtab syntax=python:
 """
 
-psvpack.cli
+psvstore.cli
 Digital capture & processing helper
 CLI entry-point
-
-@author   Jacob Hipps <jacob@ycnrg.org>
-
-Copyright (c) 2018 J. Hipps / Neo-Retro Group, Inc.
-https://ycnrg.org/
 
 """
 
