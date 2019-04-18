@@ -2,14 +2,10 @@
 # vim: set ts=4 sw=4 expandtab syntax=python:
 """
 
-psvpack.cli
+psvstore.cli
 PS Vita package tool
 CLI entry-point
 
-@author   Jacob Hipps <jacob@ycnrg.org>
-
-Copyright (c) 2018 J. Hipps / Neo-Retro Group, Inc.
-https://ycnrg.org/
 
 """
 
@@ -22,9 +18,9 @@ import sys
 import logging
 from argparse import ArgumentParser
 
-from psvpack import __version__, __date__
-from psvpack import psfree
-from psvpack.util import *
+from psvstore import __version__, __date__
+from psvstore import psfree
+from psvstore.util import *
 
 logger = logging.getLogger('psvpack')
 
