@@ -316,7 +316,6 @@ def archive(tid, config):
     get_game(tid, config, "UPD")
     #
     gresult = tsv_g.get_title(tid)
-    print('success value: ',game_count)
     if game_count == 0:
         logger.error("Error. No PKG for Title ID %s found. Aborting.", tid)
         sys.exit()
@@ -345,7 +344,6 @@ def archive(tid, config):
     zip_path = os.path.realpath(os.path.join(os.path.expanduser(config['zip_out'])))
     zip_out = os.path.realpath(os.path.join(os.path.expanduser(config['zip_out']), archive_name))
     zip_in = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'pkg'))
-    #print(archive_name)
     if not os.path.exists(zip_path):
         try:
             os.makedirs(zip_path, 0o775, exist_ok=True)
@@ -413,5 +411,4 @@ def get_game(tid, config, glist="PSV", noverify=False, getall=False):
         logger.info("All titles/items installed successfully!")
     else:
         logger.warning("Some titles/items failed")
-    print("returning Value:", ires['success'])
     return ires['success']
