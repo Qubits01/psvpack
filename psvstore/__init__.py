@@ -2,9 +2,8 @@
 # vim: set ts=4 sw=4 expandtab syntax=python:
 """
 
-psvstore.cli
-Digital capture & processing helper
-CLI entry-point
+psvstore.__init__
+Config file data
 
 """
 
@@ -14,6 +13,7 @@ __date__ = '04 Apr 2019'
 default_config = {
     'cache_dir': "{{platform_confpath}}",
     'cache_ttl': 86400,
+    'zip_out' : "{{platform_confpath}}",
     'tsv_urls': {
         'PSV': "",
         'PSV_DLC': "",

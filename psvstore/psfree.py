@@ -337,8 +337,8 @@ def archive(tid, config):
         archive_name = archive_name + ".zip"
     else:
         archive_name = archive_name + " [" + str(dlc_count) + "xDLC].zip"
-    zip_path = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'zip'))
-    zip_out = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'zip', archive_name))
+    zip_path = os.path.realpath(os.path.join(os.path.expanduser(config['zip_out'])))
+    zip_out = os.path.realpath(os.path.join(os.path.expanduser(config['zip_out']), archive_name))
     zip_in = os.path.realpath(os.path.join(os.path.expanduser(config['cache_dir']), 'pkg'))
     print(archive_name)
     if not os.path.exists(zip_path):
