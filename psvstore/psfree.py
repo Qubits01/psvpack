@@ -311,12 +311,16 @@ def archive(tid, config):
     tsv_d = TSVManager("PSV_DLC", config)
     tsv_u = TSVManager("UPD", config)
     #download
-    get_game(tid, config, "PSV")
+    game_count = get_game(tid, config, "PSV")
     dlc_count = get_game(tid, config, "PSV_DLC", False, True)
     get_game(tid, config, "UPD")
     #
     gresult = tsv_g.get_title(tid)
-    if gresult is None:
+    if game_count == 0:
+        logger.error("Error. No PKG for Title ID %s found. Aborting.", tid)
+        sys.exit()
+    elif gresult is None:
+        logger.error("Error. Title ID %s not found in Database. Aborting.", tid)
         sys.exit()
     dresult = tsv_d.get_title(tid)
     uresult = tsv_u.get_title(tid)
