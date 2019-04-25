@@ -210,17 +210,20 @@ def slugify(dirname):
     if "(DEMO" in dirname:
         dirname = dirname[:dirname.find("(DEMO")-1]
     dirname = dirname.replace(":", " -")
-    invalid_chars = '/?<>\\*|\"'
+    dirname = dirname.replace(" / ", ", ")
+    dirname = dirname.replace("/", " ")
+    invalid_chars = '?<>\\*|\"'
     return ''.join(c for c in dirname if not(c in invalid_chars))
 
 def fetch_pkg(tgame, config, glist="PSV", noverify=False):
     """
     Perform game download & optional installation
     """
-    if not(glist == "UPD"):
-        logger.info(">>> Downloading %s: %s", glist, tgame['Content ID'])
-    else:
-        logger.info(">>> Downloading %s: %s", glist, tgame["Title ID"])
+    logger.info(">>> Downloading %s: %s", glist, tgame['Name'])
+    #if not(glist == "UPD"):
+    #    logger.info(">>> Downloading %s: %s", glist, tgame['Content ID'])
+    #else:
+    #    logger.info(">>> Downloading %s: %s", glist, tgame["Title ID"])
 
     # Preflight checks
     if not(glist == "UPD"):
