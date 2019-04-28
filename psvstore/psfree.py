@@ -167,8 +167,10 @@ def download_pkg(url, dest, cs=1024, filesize=0):
     @cs = chunk size
     """
     logger.info("Downloading pkg from %s --> %s", url, dest)
-
-    pg = progressbar.ProgressBar(min_value=0, max_value=filesize).start()
+    if filesize == -1:
+        print("No Progress bar. Filesize not in tsv")
+    else:
+        pg = progressbar.ProgressBar(min_value=0, max_value=filesize).start()
     try:
         r = requests.get(url, stream=True)
         with open(dest, 'wb') as f:
@@ -177,10 +179,12 @@ def download_pkg(url, dest, cs=1024, filesize=0):
                 if chunk:
                     f.write(chunk)
                     curbyte += len(chunk)
-                    pg.update(curbyte)
+                    if filesize >0: 
+                        pg.update(curbyte)
 
         fsize = os.stat(dest).st_size
-        pg.finish()
+        if filesize >0:
+            pg.finish()
         logger.info("Successfully fetched package (%s total size)", fmtsize(fsize))
         return fsize
     except Exception as e:
@@ -262,6 +266,8 @@ def fetch_pkg(tgame, config, glist="PSV", noverify=False):
         if not dl_size:
             logger.error("Failed to retrieve package from remote repository :(")
             return None
+        elif rp_size == -1:
+            logger.warning("Filesize not in tsv. Downloaded pkg filesize could not be verified")
         elif dl_size != rp_size:
             logger.warning("Downloaded package does not match reported size (%s != %s bytes)", dl_size, rp_size)
 
