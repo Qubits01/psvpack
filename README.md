@@ -1,7 +1,7 @@
 
 # psvstore
 
-**psvstore** is a command-line tool  for Linux for automatically creating archives of PS Vita Titles. It also includes a search function. It might work on other platforms, too but it's only tested on Linux so far.
+**psvstore** is a command-line tool written in python for automatically creating archives of PS Vita Titles. It also includes a search function. What does psvstore set apart from other pkg downloaders? First, it's a command-line tool, so it can be used on a headless remote server, for example. Second, it creates something like merged sets. It downloads a title, all available DLCs of the title plus the latest update of that title ans packs it all together in an accordingly named archive. It stores the original, unaltered pks that match the nointro dat file along with the appropriate zrifs, if a source is given. It's only tested on Linux so far but it sould work on other platforms, too.
 
 # License
 
@@ -111,7 +111,7 @@ psvstore a TITLE_ID
 ```
 psvstore a PCSA00007
 ```
-This will download *Hustle Kings (US)*, all DLCs of that game and the latest update to your default cache directory. It will then create a zip archive named "Hustle Kings [PCSA00007] [US] [1.01] [3xDLC].zip". Inside will be all the downloaded pks with the unaltered name. There will also be stored the corresponding zRIF of a package, if available within the tsv file. It will be the same filename as the pkg with a .zRIF extension.
+This will download *Hustle Kings (US)*, all DLCs of that game and the latest update to your default cache directory. It will then create a zip archive named "Hustle Kings [PCSA00007] [US] [1.01] [3xDLC].zip". Inside will be all the downloaded pks with the unaltered name. The corresponding zRIF of a package will also be stored, if available within the tsv file. It will be the same filename as the pkg with a .zRIF extension.
 Each DLC will be stored within a subdir named accordingly to the DLC. Updates will be stored in a subfolder named after the version number of the Update. Finally, there will be a comment added to the zipfile, that will tell you the minimum required firmware version of the game - updated and not updated.
 
 ## Batch-Archiving Games
