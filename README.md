@@ -1,7 +1,7 @@
 
 # psvstore
 
-**psvstore** is a command-line tool written in python for automatically creating archives of PS Vita Titles. It also includes a search function. What does psvstore set apart from other pkg downloaders? First, it's a command-line tool, so it can be used on a headless remote server, for example. Second, it creates something like merged sets. It downloads a title, all available DLCs of the title plus the latest update of that title ans packs it all together in an accordingly named archive. It stores the original, unaltered pks that match the nointro dat file along with the appropriate zrifs, if a source is given. It's only tested on Linux so far but it sould work on other platforms, too.
+**psvstore** is a command-line tool written in python for automatically creating archives of PS Vita Titles downloaded from PSN. It also includes a search function. What does psvstore set apart from other pkg downloaders? First, it's a command-line tool, so it can be used on a headless remote server, for example. Second, it creates something like merged sets. It downloads a title, all available DLCs of the title plus the latest update of that title ans packs it all together in an accordingly named archive. It stores the original, unaltered pks that match the nointro dat file along with the appropriate zrifs, if a source is given. It's only tested on Linux so far but it sould work on other platforms, too.
 
 # License
 
