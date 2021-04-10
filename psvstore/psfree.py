@@ -327,10 +327,10 @@ def archive(tid, config):
     gresult = tsv_g.get_title(tid)
     if game_count == 0:
         logger.error("Error. No PKG for Title ID %s found. Aborting.", tid)
-        sys.exit()
+        return
     elif gresult is None:
         logger.error("Error. Title ID %s not found in Database. Aborting.", tid)
-        sys.exit()
+        return
     dresult = tsv_d.get_title(tid)
     uresult = tsv_u.get_title(tid)
     uresult = getMaxVersion(uresult)
@@ -380,13 +380,49 @@ def getMaxVersion(rlist):
     pos = 0
     if not(rlist is None):
         for entry in range(len(rlist)):
-            if float(rlist[entry]['Update Version']) > max:
-                max = float(rlist[entry]['Update Version'])
-                pos = entry
+            if not(rlist[entry]['Update Version'] is None):
+              if float(rlist[entry]['Update Version']) > max:
+                  max = float(rlist[entry]['Update Version'])
+                  pos = entry
         return [rlist[pos]]
     else:
         return rlist
 
+def printname(tid, config):
+    """
+    Creates the archive string name of a given TID.
+    For updating purposes
+    """
+    tsv_g = TSVManager("PSV", config)
+    tsv_d = TSVManager("PSV_DLC", config)
+    tsv_u = TSVManager("UPD", config)
+    
+    gresult = tsv_g.get_title(tid)
+    dresult = tsv_d.get_title(tid)
+    uresult = tsv_u.get_title(tid)
+    uresult = getMaxVersion(uresult)
+    
+    title = gresult[0]['Title ID']
+    region = gresult[0]['Region']
+    name = slugify(gresult[0]['Name'])
+    minv_o = gresult[0]['Required FW']
+    if dresult is None:
+        dlc_count = 0
+    else:
+        dlc_count = len(dresult)
+    version = "1.00"  #Game Version
+    minv_u = minv_o   #Firmware Version(s)
+    if not(uresult is None):
+        version = uresult[0]['Update Version']
+        minv_u = uresult[0]['Required FW VERSION']
+    archive_name = name + " [" + title + "] [" + region + "] [" + version + "]"
+    
+    if dlc_count == 0:
+        archive_name = archive_name + ".zip"
+    else:
+        archive_name = archive_name + " [" + str(dlc_count) + "xDLC].zip"
+    
+    return archive_name
 
 def get_game(tid, config, glist="PSV", noverify=False, getall=False):
     """
