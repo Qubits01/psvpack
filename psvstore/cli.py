@@ -60,14 +60,8 @@ def parse_cli(show_help=False):
     # use defaults stored in __init__
     aparser.set_defaults(loglevel=logging.INFO, command=None, noverify=False, glist="PSV", config=get_platform_confpath())
 
-    aparser.add_argument("command", action="store", nargs="?", metavar="COMMAND", help="Command [search, install]")
+    aparser.add_argument("command", action="store", nargs="?", metavar="COMMAND", help="Command [s, a, b, n, l]")
     aparser.add_argument("parameter", action="store", nargs="?", metavar="PARAMETER", help="Title ID | Batch File | Search term")
-    aparser.add_argument("--glist", "-g", action="store", metavar="LIST", help="game list [PSV,PSV_DLC,UPD]")
-    aparser.add_argument("--config", "-c", action="store", metavar="PATH", help="config file [default: "+get_platform_confpath()+"]")
-    aparser.add_argument("--noverify", "-X", action="store_true", help="skip existing PKG checksum verification")
-    aparser.add_argument("--debug", "-d", dest="loglevel", action="store_const", const=logging.DEBUG,
-                         help="Enable debug logging")
-    aparser.add_argument("--version", "-V", action="version", version="%s (%s)" % (__version__, __date__))
 
     if show_help:
         aparser.print_help()
@@ -83,7 +77,7 @@ def _main():
     setup_logging(clevel=opts.loglevel)
     uconfig = load_config(opts.config)
 
-    if not opts.command in ["a","b","s"]:
+    if not opts.command in ["a","b","s","n","l"]:
         parse_cli(show_help=True)
 
     if opts.command[0] == 's':
@@ -93,11 +87,24 @@ def _main():
             psfree.archive(opts.parameter, uconfig)
         else:
             logger.error("Error: Invalid Title ID")
+    elif opts.command[0] == 'n':
+        if opts.parameter[:3]==("PCS") and opts.parameter[3] in ["A","B","H","E","C","G","I","F","D",] and opts.parameter[4:].isnumeric():
+            print(psfree.printname(opts.parameter, uconfig))
+        else:
+            logger.error("Error: Invalid Title ID")        
     elif opts.command[0] == 'b':
         try:
             with open(opts.parameter, 'r') as batch:
                 for line in batch:
                     psfree.archive(line[:-1], uconfig) #delete \n
+                    if kbhit(): break
+        except OSError:
+            logger.error("Error: File %s not found", opts.parameter)
+    elif opts.command[0] == 'l':
+        try:
+            with open(opts.parameter, 'r') as batch:
+                for line in batch:
+                    print(psfree.printname(line[:-1], uconfig)) #delete \n
                     if kbhit(): break
         except OSError:
             logger.error("Error: File %s not found", opts.parameter)
